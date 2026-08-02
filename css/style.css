@@ -223,7 +223,7 @@
             text-decoration: underline;
         }
 
-        /* ----- mobile-first responsive adjustments ----- */
+       /* ----- mobile-first responsive adjustments ----- */
         @media (min-width: 40rem) {
             body {
                 background-color: var(--stone-100);
@@ -247,6 +247,7 @@
             }
 
             .nutrition-table td {
-                padding-inline-start: 1.5rem;
+                /* Mengganti nilai 1.5rem statis dengan clamp() responsif */
+                padding-inline-start: clamp(1rem, 2vw, 1.5rem);
             }
         }
