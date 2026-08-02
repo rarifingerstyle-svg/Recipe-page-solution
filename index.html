@@ -14,26 +14,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
 
     <!-- Tailwind CSS via CDN -->
-    <script src="https://cdn.tailwindcss.com">
-    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
-   <link rel="stylesheet" href="css/style.css" />
-
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
 
-    <main>
+    <main class="w-full flex flex-col justify-center items-center">
         <article class="recipe-card" aria-label="Simple Omelette Recipe">
 
             <!-- Omelette image -->
-            <figure class="recipe-image" aria-hidden="true">
+            <figure class="recipe-image">
                 <img 
                     src="assets/images/image-omelette.jpeg" 
                     alt="A delicious golden omelette on a plate" 
-                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" 
+                    onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');" 
                 />
-                <span class="fallback-text" style="display:none;">
+                <span class="fallback-text hidden">
                     ⚠️ Gambar tidak ditemukan. Pastikan file <strong>image-omelette.jpg</strong> ada di folder <strong>assets/images/</strong>
                 </span>
             </figure>
@@ -48,10 +46,11 @@
             </header>
 
             <!-- PREPARATION TIME -->
+            <!-- Diubah dari h3 menjadi h2 agar hirarki heading urut (h1 -> h2) -->
             <section class="prep-box" aria-labelledby="prep-heading">
-                <h3 id="prep-heading" class="font-bold text-[1.1rem] text-[hsl(332,51%,32%)] mb-1">
+                <h2 id="prep-heading" class="font-bold text-[1.1rem] text-[hsl(332,51%,32%)] mb-1">
                     Preparation time
-                </h3>
+                </h2>
                 <ul class="list-prep list-disc ml-5 text-[hsl(30,10%,34%)] text-base">
                     <li><strong>Total</strong>: Approximately 10 minutes</li>
                     <li><strong>Preparation</strong>: 5 minutes</li>
@@ -148,14 +147,13 @@
             </section>
 
         </article>
-    <!-- FOOTER -->
-    <footer class="attribution" align="center" style="font-size: 0.6875rem; text-align: center; margin-top: 1rem;">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
-    Coded by <a href="https://www.frontendmentor.io/profile/rarifingerstyle-svg">Ahmad Asrari</a>.
-  </footer>
-    </main>
 
-    
+        <!-- FOOTER (Inline style & align="center" dihapus) -->
+        <footer class="attribution">
+            Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" rel="noopener noreferrer">Frontend Mentor</a>. 
+            Coded by <a href="https://www.frontendmentor.io/profile/rarifingerstyle-svg" target="_blank" rel="noopener noreferrer">Ahmad Asrari</a>.
+        </footer>
+    </main>
 
 </body>
 </html>
