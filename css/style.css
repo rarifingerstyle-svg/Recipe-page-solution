@@ -26,7 +26,7 @@
             margin: 0;
         }
 
-        /* ----- headings (ordered logically) ----- */
+        /* ----- headings (ordered by specificity) ----- */
         h1,
         h2 {
             font-family: 'Young Serif', serif;
@@ -48,7 +48,7 @@
 
         /* ----- card ----- */
         .recipe-card {
-            max-width: 46rem; /* 736px dalam relative unit */
+            max-width: 46rem;
             width: 100%;
             background: var(--white);
             border-radius: 0;
@@ -80,8 +80,9 @@
 
         .recipe-image .fallback-text {
             color: var(--stone-600);
-            font-size: 0.9rem;
-            padding: 1rem;
+            /* Menggunakan clamp() sesuai saran best practice */
+            font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+            padding: clamp(0.75rem, 2vw, 1rem);
             text-align: center;
         }
 
@@ -96,16 +97,26 @@
         .prep-box h2 {
             font-family: 'Outfit', sans-serif;
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
             color: var(--rose-800);
             margin-block-end: clamp(0.35rem, 1vw, 0.5rem);
         }
 
-        /* ----- custom list markers ----- */
+        /* ----- base list styles ----- */
+        ul,
+        ol {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            margin-block-end: clamp(0.25rem, 1vw, 0.4rem);
+        }
+
+        /* ----- custom list markers (ordered from least to most specific) ----- */
         .list-prep li,
         .list-ingredients li {
-            padding-inline-start: 0.75rem;
-            margin-block-end: clamp(0.25rem, 1vw, 0.4rem);
+            padding-inline-start: clamp(0.5rem, 1.5vw, 0.75rem);
         }
 
         .list-prep li::marker {
@@ -121,18 +132,16 @@
             margin-block-end: 0;
         }
 
-        /* ----- instruction list (ordered by specificity) ----- */
+        /* ----- instruction list ----- */
         .list-instructions {
             list-style: none;
             counter-reset: step;
-            padding: 0;
-            margin: 0;
         }
 
         .list-instructions li {
             counter-increment: step;
             display: flex;
-            gap: 1rem;
+            gap: clamp(0.75rem, 2vw, 1rem);
             padding-block: clamp(0.35rem, 1vw, 0.5rem);
             border-block-end: 1px solid var(--stone-150);
         }
@@ -145,7 +154,7 @@
             content: counter(step);
             font-family: 'Outfit', sans-serif;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 2vw, 1rem);
             color: var(--brown-800);
             flex-shrink: 0;
             width: 1.5rem;
@@ -179,7 +188,7 @@
         .nutrition-table td {
             padding-block: clamp(0.4rem, 1.5vw, 0.6rem);
             padding-inline: clamp(0.75rem, 2vw, 1rem) 0;
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 2vw, 1rem);
         }
 
         .nutrition-table td:last-child {
@@ -198,7 +207,7 @@
 
         /* ----- attribution ----- */
         .attribution {
-            font-size: 0.6875rem;
+            font-size: clamp(0.65rem, 1.5vw, 0.6875rem);
             text-align: center;
             margin-block-start: clamp(1rem, 3vw, 2rem);
             margin-block-end: 1rem;
